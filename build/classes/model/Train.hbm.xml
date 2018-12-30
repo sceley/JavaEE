@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="model.Train" table="Train">
+		<id name="trainId" type="int" column="trainId">
+			<generator class="native"></generator>
+		</id>
+		<property name="trainNumber" type="string" column="trainNumber"></property>
+		<property name="centerTime" type="int" column="centerTime"></property>
+		<property name="time" type="int" column="time"></property>
+		<property name="capacity" type="int" column="capacity"></property>
+		<many-to-one name="source" class="model.Station" column="sourceId"/>
+		<many-to-one name="center" class="model.Station" column="centerId"/>
+		<many-to-one name="destination" class="model.Station" column="destinationId"/>
+	</class>
+</hibernate-mapping>

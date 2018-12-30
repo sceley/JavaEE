@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="TrainSystem" extends="struts-default">
+	
+		<interceptors>
+			<interceptor name="adminAuthority" class="interceptor.AdminAuthority"></interceptor>
+		</interceptors>
+		
+		<global-results>
+			<result name="login" type="redirect">/admin</result>
+		</global-results>
+		
+		<action name="index">
+			<result>/index.jsp</result>
+		</action>
+		
+		<action name="admin" class="action.AdminAction" method="showAdmin">
+			<result name="success">/admin.jsp</result>
+		</action>
+		<action name="loginAdmin" class="action.AdminAction" method="login">
+			<result name="success" type="redirect">${path}</result>
+			<result name="failure">/admin.jsp</result>
+		</action>
+		
+		<action name="station" class="action.StationAction" method="showStation">
+			<result name="success">/station.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="showCreateStation" class="action.StationAction" method="showCreateStation">
+			<result name="success">/createStation.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="createStation" class="action.StationAction" method="create">
+			<result name="success" type="redirect">/station</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="deleteStation" class="action.StationAction" method="delete">
+			<result name="success" type="redirect">/station</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		
+		<action name="link" class="action.LinkAction" method="showLink">
+			<result name="success">/link.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="showCreateLink" class="action.LinkAction" method="showCreateLink">
+			<result name="success">/createLink.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="createLink" class="action.LinkAction" method="create">
+			<result name="success" type="redirect">/link</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="deleteLink" class="action.LinkAction" method="delete">
+			<result name="success" type="redirect">/link</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		
+		<action name="train" class="action.TrainAction" method="showTrain">
+			<result name="success">/train.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="showCreateTrain" class="action.TrainAction" method="showCreateTrain">
+			<result name="success">/createTrain.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		<action name="createTrain" class="action.TrainAction" method="create">
+			<result name="success" type="redirect">/train</result>
+			<result name="failure">/failure.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		
+		<action name="deleteTrain" class="action.TrainAction" method="delete">
+			<result name="success" type="redirect">/train</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+			<interceptor-ref name="adminAuthority"></interceptor-ref>
+		</action>
+		
+		<action name="queryTrain" class="action.QueryAction" method="query">
+			<result name="success">/index.jsp</result>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+	</package>
+</struts>

@@ -1,0 +1,21 @@
+.sider {
+	border-right: 1px solid rgba(0, 0, 0, .1);
+	height: calc(100vh - 4rem);
+}
+
+header {
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+}
+
+.title {
+	text-align: center;
+}
+
+.btn-area {
+	text-align: center;
+}
+
+.admin-form {
+	width: 500px;
+	margin: 0 auto;
+}

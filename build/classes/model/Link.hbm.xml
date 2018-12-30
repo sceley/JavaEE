@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+ 
+<hibernate-mapping>
+	<class name="model.Link" table="Link">
+		<id name="linkId" type="int" column="linkId">
+			<generator class="native"></generator>
+		</id>
+		<many-to-one name="source" class="model.Station" column="sourceId"/>
+		<many-to-one name="destination" class="model.Station" column="destinationId"/>
+		<property name="distance" type="int" column="distance"></property>
+		<property name="price" type="int" column="price"></property>
+	</class>
+</hibernate-mapping>
